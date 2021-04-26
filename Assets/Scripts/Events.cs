@@ -1,10 +1,14 @@
 ﻿using UnityEngine.Events;
+using UnityEngine;
 
 [System.Serializable]
 public class ShopEvent : UnityEvent<Items, uint, string> { }
 
 [System.Serializable]
 public class HumanoidAudioEvent : UnityEvent<HumanoidAudioType> { }
+
+[System.Serializable]
+public class GameObjectEvent : UnityEvent<GameObject> { }
 
 
 [System.Serializable]

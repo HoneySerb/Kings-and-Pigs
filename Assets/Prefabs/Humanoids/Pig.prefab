@@ -375,6 +375,7 @@ MonoBehaviour:
   _hit: {fileID: 8300000, guid: 68de6f571fbf0cd4c8c3a2c24dedd535, type: 3}
   _attack: {fileID: 8300000, guid: 30731b0fab5aa4247af379f8dd514972, type: 3}
   _jump: {fileID: 8300000, guid: 8190c60efe80b1d4d8f1132106c7b734, type: 3}
+  _throw: {fileID: 0}
 --- !u!1 &8154284853287514714
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +439,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 256
-  detectEvent:
+  _detectEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8154284853265305177}

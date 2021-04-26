@@ -63,7 +63,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 256
-  detectEvent:
+  _detectEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2951790479749088671}

@@ -5,9 +5,9 @@ public class Player : Humanoid
 {
     [SerializeField] private float _jumpForce;
 
-    public ByteEvent HealthEvent;
-    public ByteEvent FinishEvent;
-    public StringEvent DiamondEvent;
+    [SerializeField] private ByteEvent _healthEvent;
+    [SerializeField] private ByteEvent _finishEvent;
+    [SerializeField] private StringEvent _diamondEvent;
 
     private (bool OnGround, byte JumpQuantity) _position = (true, 2);
     private byte _diamond = 0;
@@ -32,7 +32,7 @@ public class Player : Humanoid
         {
             case Items.HealPotion: 
                 OnHeal(1);
-                HealthEvent.Invoke(Health);
+                _healthEvent.Invoke(Health);
                 break;
             case Items.DiamondPotion:
                 _isDoubleDiamonds = true;
@@ -46,11 +46,11 @@ public class Player : Humanoid
         {
             case "Heart":
                 OnHeal(quantity);
-                HealthEvent.Invoke(Health);
+                _healthEvent.Invoke(Health);
                 break;
             case "Diamond":
                 _diamond += _isDoubleDiamonds? (byte)(quantity * 2) : quantity;
-                DiamondEvent.Invoke(_diamond.ToString());
+                _diamondEvent.Invoke(_diamond.ToString());
                 break;
         }
     }
@@ -84,14 +84,14 @@ public class Player : Humanoid
     {
         if (Health <= damage)
         {
-            HealthEvent.Invoke(0);
+            _healthEvent.Invoke(0);
 
             StartCoroutine(SendFinishEvent(2, 1f));
         }
 
         base.Hit(damage, pushForce, timeStun);
 
-        HealthEvent.Invoke(Health);
+        _healthEvent.Invoke(Health);
     }
 
     private void Start() => _doorStun = true;
@@ -154,7 +154,7 @@ public class Player : Humanoid
 
         UpdateDiamonds();
 
-        FinishEvent.Invoke(type);
+        _finishEvent.Invoke(type);
     }
 
     private void UpdateDiamonds()
